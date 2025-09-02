@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mama's Diner - Interactive Restaurant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Theme toggle button -->
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🍕 Mama's Diner</h1>
+            <p>The best comfort food in town!</p>
+        </div>
+
+        <!-- Part 1: Interactive Counter (Table Counter) -->
+        <div class="section">
+            <h2>📊 Part 1: Table Counter</h2>
+            <p>Keep track of available tables in our restaurant:</p>
+            
+            <div class="counter-section">
+                <div class="counter-display" id="tableCounter">25</div>
+                <p><strong>Available Tables</strong></p>
+                
+                <button class="counter-btn" id="addTable">➕ Add Table</button>
+                <button class="counter-btn" id="removeTable">➖ Remove Table</button>
+                <button class="counter-btn" id="resetTables">🔄 Reset to 25</button>
+                
+                <p id="tableMessage" style="margin-top: 15px; font-weight: bold;"></p>
+            </div>
+        </div>
+
+        <!-- Part 2: Interactive Elements (Menu & FAQ) -->
+        <div class="section">
+            <h2>🍽️ Part 2: Our Menu</h2>
+            <p>Click on different categories to see our delicious options:</p>
+            
+            <div class="menu-tabs">
+                <button class="tab-btn active" data-tab="appetizers">🥗 Appetizers</button>
+                <button class="tab-btn" data-tab="mains">🍖 Main Dishes</button>
+                <button class="tab-btn" data-tab="desserts">🍰 Desserts</button>
+                <button class="tab-btn" data-tab="drinks">🥤 Drinks</button>
+            </div>
+            
+            <div class="tab-content active" id="appetizers">
+                <h3>🥗 Appetizers</h3>
+                <ul>
+                    <li><strong>Mozzarella Sticks</strong> - $8.99 - Crispy fried cheese sticks</li>
+                    <li><strong>Buffalo Wings</strong> - $12.99 - Spicy chicken wings with ranch</li>
+                    <li><strong>Onion Rings</strong> - $7.99 - Golden fried onion rings</li>
+                    <li><strong>Loaded Nachos</strong> - $10.99 - Chips with cheese, beans, and jalapeños</li>
+                </ul>
+            </div>
+            
+            <div class="tab-content" id="mains">
+                <h3>🍖 Main Dishes</h3>
+                <ul>
+                    <li><strong>Mama's Burger</strong> - $15.99 - Juicy beef patty with all the fixings</li>
+                    <li><strong>Grilled Chicken</strong> - $18.99 - Herb-seasoned chicken breast</li>
+                    <li><strong>Fish & Chips</strong> - $16.99 - Beer-battered fish with crispy fries</li>
+                    <li><strong>Spaghetti & Meatballs</strong> - $14.99 - Classic Italian comfort food</li>
+                </ul>
+            </div>
+            
+            <div class="tab-content" id="desserts">
+                <h3>🍰 Desserts</h3>
+                <ul>
+                    <li><strong>Chocolate Cake</strong> - $6.99 - Rich chocolate layer cake</li>
+                    <li><strong>Apple Pie</strong> - $5.99 - Homemade with vanilla ice cream</li>
+                    <li><strong>Cheesecake</strong> - $7.99 - Creamy New York style</li>
+                    <li><strong>Ice Cream Sundae</strong> - $4.99 - Three scoops with toppings</li>
+                </ul>
+            </div>
+            
+            <div class="tab-content" id="drinks">
+                <h3>🥤 Drinks</h3>
+                <ul>
+                    <li><strong>Fresh Coffee</strong> - $2.99 - Hot or iced</li>
+                    <li><strong>Milkshakes</strong> - $5.99 - Vanilla, chocolate, or strawberry</li>
+                    <li><strong>Fresh Juice</strong> - $3.99 - Orange, apple, or cranberry</li>
+                    <li><strong>Soft Drinks</strong> - $2.49 - Coke, Pepsi, Sprite, etc.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="section">
+            <h2>❓ Frequently Asked Questions</h2>
+            <p>Click on any question to see the answer:</p>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What are your opening hours? ▼
+                </div>
+                <div class="faq-answer">
+                    We're open Monday to Sunday from 8:00 AM to 10:00 PM. We serve breakfast, lunch, and dinner!
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Do you take reservations? ▼
+                </div>
+                <div class="faq-answer">
+                    Yes! You can make reservations by calling us at (555) 123-4567 or using our online booking form below.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Do you have vegetarian options? ▼
+                </div>
+                <div class="faq-answer">
+                    Absolutely! We have many vegetarian dishes including veggie burgers, salads, pasta, and more. Just ask your server!
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Do you offer takeout and delivery? ▼
+                </div>
+                <div class="faq-answer">
+                    Yes! We offer both takeout and delivery. Call us or order online. Delivery is available within 5 miles.
+                </div>
+            </div>
+        </div>
+
+        <!-- Part 3: Form Validation -->
+        <div class="section">
+            <h2>📝 Part 3: Make a Reservation</h2>
+            <p>Fill out this form to book your table:</p>
+            
+            <form id="reservationForm">
+                <div class="form-group">
+                    <label for="customerName">Your Name *</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                    <div class="error-message" id="nameError"></div>
+                    <div class="success-message" id="nameSuccess">✓ Name looks good!</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error-message" id="emailError"></div>
+                    <div class="success-message" id="emailSuccess">✓ Email is valid!</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                    <div class="error-message" id="phoneError"></div>
+                    <div class="success-message" id="phoneSuccess">✓ Phone number is valid!</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="partySize">Party Size *</label>
+                    <select id="partySize" name="partySize" required>
+                        <option value="">Select party size</option>
+                        <option value="1">1 person</option>
+                        <option value="2">2 people</option>
+                        <option value="3">3 people</option>
+                        <option value="4">4 people</option>
+                        <option value="5">5 people</option>
+                        <option value="6">6 people</option>
+                        <option value="7+">7+ people</option>
+                    </select>
+                    <div class="error-message" id="partySizeError"></div>
+                    <div class="success-message" id="partySizeSuccess">✓ Party size selected!</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="reservationDate">Reservation Date *</label>
+                    <input type="date" id="reservationDate" name="reservationDate" required>
+                    <div class="error-message" id="dateError"></div>
+                    <div class="success-message" id="dateSuccess">✓ Date selected!</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="specialRequests">Special Requests (Optional)</label>
+                    <textarea id="specialRequests" name="specialRequests" rows="4" placeholder="Any dietary restrictions, special occasions, seating preferences, etc."></textarea>
+                    <div class="success-message" id="requestsSuccess">✓ Request noted!</div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">🍽️ Make Reservation</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success popup -->
+    <div class="overlay" id="overlay"></div>
+    <div class="success-popup" id="successPopup">
+        <h2 style="color: #27ae60; margin-bottom: 15px;">🎉 Reservation Confirmed!</h2>
+        <p>Thank you for your reservation at Mama's Diner!</p>
+        <p>We'll send you a confirmation email shortly.</p>
+        <button style="margin-top: 20px; padding: 10px 20px; background: #ff6b35; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="closePopup()">Close</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
